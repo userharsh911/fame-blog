@@ -18,21 +18,43 @@ return (
                     <h2 className="font-bold text-xl mb-2 text-gray-800 dark:text-gray-100">{title}</h2>
             </div>
             <div className="px-6 pb-4 relative inline-block group">
-                    <button
-                        onClick={() =>{
-                                if(authStatus) navigate(`/${path}/${$id}`)
-                                else navigate('/login')
-                        }}
-                        className={`bg-blue-500 ${authStatus ? 'cursor-pointer' : 'cursor-not-allowed'} hover:bg-blue-600 text-white font-semibold py-2 px-4  rounded-lg transition-colors duration-200 dark:bg-blue-600 dark:hover:bg-blue-700`}
-                    >
-                        Read More
-                    </button>
-                    <span class="absolute left-1/2 -translate-x-1/2 bottom-full mb-2
-                        hidden group-hover:block bg-gray-800 text-white text-sm 
-                        px-2 py-1 rounded shadow-lg">
-                Login first
-                </span>
-            </div>
+    <button
+        onClick={() => {
+            if(authStatus) navigate(`/${path}/${$id}`)
+            else navigate('/login')
+        }}
+        className={`
+            bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded-lg 
+            transition-all duration-200 dark:bg-blue-600 dark:hover:bg-blue-700
+            ${authStatus ? 'cursor-pointer shadow-md hover:shadow-lg' : 'cursor-not-allowed opacity-75 hover:opacity-60'}
+        `}
+    >
+        Read More
+    </button>
+    
+    {!authStatus && (
+        <span className="
+            absolute left-1/2 -translate-x-1/2 bottom-full mb-3
+            opacity-0 group-hover:opacity-100 invisible group-hover:visible
+            bg-gray-800 text-white text-sm px-3 py-2 rounded-lg shadow-xl
+            transition-all duration-200 ease-out whitespace-nowrap z-50
+            transform group-hover:translate-y-0 translate-y-1
+            backdrop-blur-sm
+            after:content-[''] after:absolute after:top-full after:left-1/2 
+            after:-translate-x-1/2 after:border-l-[6px] after:border-r-[6px] 
+            after:border-t-[6px] after:border-l-transparent after:border-r-transparent 
+            after:border-t-gray-800
+        "
+        style={{
+            background: 'rgba(31, 41, 55, 0.95)',
+            backdropFilter: 'blur(8px)',
+            boxShadow: '0 10px 25px -5px rgba(0, 0, 0, 0.3), 0 10px 10px -5px rgba(0, 0, 0, 0.04)'
+        }}
+        >
+            🔒 Login first
+        </span>
+    )}
+</div>
     </div>
 )
 }
