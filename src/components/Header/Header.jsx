@@ -43,9 +43,14 @@ const Header = () => {
             active : authStatus
         },
     ]
-
+    useEffect(()=>{
+        const dark = JSON.parse(localStorage.getItem("dark"))
+        setIsDark(dark)
+        if(dark) document.getElementById('root').classList.toggle('dark');
+    },[])
     const darkToggle = () => {
         setIsDark(!isDark);
+        localStorage.setItem("dark",JSON.stringify(!isDark))
         document.getElementById('root').classList.toggle('dark');
     }
 const [isSidebarOpen, setIsSidebarOpen] = useState(false);
