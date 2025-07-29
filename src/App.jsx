@@ -27,7 +27,7 @@ function App() {
 
   if(!loader) {
     return (
-      <div className="min-h-screen  bg-gray-150 dark:bg-gray-700">
+      <div className="min-h-screen bg-gray-150 dark:bg-gray-700">
         <ScrollToTop />
         <Header />
           <main className="container mx-auto py-8 max-w-7xl">

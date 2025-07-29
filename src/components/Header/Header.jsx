@@ -62,7 +62,7 @@ return (
                     {user ? (
                         <Admin 
                             user={user} 
-                            className={`${pathname=='/admin/'+user.$id ? 'bg-emerald-600 text-white ' : 'text-gray-700 dark:text-gray-200'}`} 
+                            className={`${pathname=='/admin/'+user.$id ? 'border-b-4 border-violet-800 dark:border-cyan-500' : ' '} hover:bg-gray-300 hover:dark:bg-gray-900 dark:text-white text-gray-950`} 
                             onClick={()=>navigate(`/admin/${user.$id}`)}/>
                     ) : null}
                     <button
@@ -92,7 +92,7 @@ return (
                                     <li key={item.name}>
                                         <Button
                                             onClick={() => navigate(item.navTo)}
-                                            className={`px-4 py-2 ${pathname==item.navTo ? 'bg-emerald-600 text-emerald-100' : 'hover:bg-gray-200 dark:hover:bg-gray-700 hover:text-blue-400 dark:hover:text-blue-300'} cursor-pointer text-black dark:text-gray-100  rounded-md transition duration-300 `}
+                                            className={`px-4 py-2 ${pathname==item.navTo ? 'border-b-4 border-violet-800 dark:border-cyan-400 hover:bg-gray-300 hover:dark:bg-gray-900' : 'hover:bg-gray-200 dark:hover:bg-gray-700 hover:text-blue-400 dark:hover:text-blue-300'} cursor-pointer text-black dark:text-gray-100  rounded-md transition duration-300 `}
                                         >
                                             {item.name}
                                         </Button>
@@ -136,7 +136,7 @@ return (
                                                 navigate(item.navTo);
                                                 toggleSidebar();
                                             }}
-                                            className={`w-full px-4 ${pathname==item.navTo ? 'bg-emerald-600 text-emerald-100' : 'hover:bg-gray-200 dark:hover:bg-gray-700 hover:text-blue-400 dark:hover:text-blue-300'} py-2 cursor-pointer text-black dark:text-gray-100  rounded-md transition duration-300 `}
+                                            className={`w-full px-4 ${pathname==item.navTo ? 'border-b-4 border-violet-800 dark:border-cyan-400 hover:bg-gray-300 hover:dark:bg-gray-900' : 'hover:bg-gray-200 dark:hover:bg-gray-700 hover:text-blue-400 dark:hover:text-blue-300'} py-2 cursor-pointer text-black dark:text-gray-100  rounded-md transition duration-300 `}
                                         >
                                             {item.name}
                                         </Button>
@@ -151,7 +151,7 @@ return (
                         {user ? (
                             <Admin 
                                 user={user}
-                                className={`${pathname=='/admin/'+user.$id ? 'bg-emerald-600 text-white ' : 'text-gray-700 dark:text-gray-200'}`} onClick={()=>{
+                                className={`${pathname=='/admin/'+user.$id ? 'border-b-4 border-violet-800 dark:border-cyan-500' : ' '} hover:bg-gray-300 hover:dark:bg-gray-900 dark:text-white text-gray-950`} onClick={()=>{
                                     navigate(`/admin/${user.$id}`);
                                     toggleSidebar();
                                 }}/>
