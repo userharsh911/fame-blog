@@ -14,6 +14,7 @@ import Home from './pages/Home.jsx'
 import PostEdit from './pages/PostEdit.jsx'
 import MyPost from './pages/MyPost.jsx'
 import AdminPage from './pages/AdminPage.jsx'
+import ScrollToTop from './components/ScrollToTop.jsx'
 
 const router = createBrowserRouter(
   createRoutesFromElements(

@@ -5,6 +5,7 @@ import {useDispatch} from "react-redux"
 import {Outlet} from "react-router-dom"
 import Header from './components/Header/Header.jsx';
 import Footer from './components/Footer/Footer.jsx';
+import ScrollToTop from './components/ScrollToTop.jsx';
 
 function App() {
   const [loader, setLoader] = useState(false)
@@ -27,7 +28,7 @@ function App() {
   if(!loader) {
     return (
       <div className="min-h-screen  bg-gray-150 dark:bg-gray-700">
-        
+        <ScrollToTop />
         <Header />
           <main className="container mx-auto py-8 max-w-7xl">
 
