@@ -32,7 +32,7 @@ const Home = () => {
           </p>
         </div>
       ):''}
-      <GetAllCards/>
+      <GetAllCards path={'home'}/>
     </div>
     </div>
   )

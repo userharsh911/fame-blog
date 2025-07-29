@@ -10,7 +10,6 @@ const Header = () => {
     const [isDark,setIsDark] = useState()
     const authStatus = useSelector(state => state.isAuthenticated)
     const user = useSelector(state => state.user)
-
     const navItems = [
         {
             name:"Home",
@@ -93,7 +92,7 @@ return (
                                     <li key={item.name}>
                                         <Button
                                             onClick={() => navigate(item.navTo)}
-                                            className={`px-4 py-2 ${pathname==item.navTo ? 'border-b-4 border-violet-800 dark:border-cyan-400 bg-gray-300 dark:bg-gray-900' : 'hover:bg-gray-300 dark:hover:bg-gray-900'} cursor-pointer text-black dark:text-gray-100  rounded-md transition duration-300 `}
+                                            className={`px-4 py-2 ${pathname.includes(item.navTo) ? 'border-b-4 border-violet-800 dark:border-cyan-400 bg-gray-300 dark:bg-gray-900' : 'hover:bg-gray-300 dark:hover:bg-gray-900'} cursor-pointer text-black dark:text-gray-100  rounded-md transition duration-300 `}
                                         >
                                             {item.name}
                                         </Button>
@@ -137,7 +136,7 @@ return (
                                                 navigate(item.navTo);
                                                 toggleSidebar();
                                             }}
-                                            className={`w-full px-4 py-3  ${pathname==item.navTo ? 'border-b-4 border-violet-800 dark:border-cyan-400 bg-gray-300 dark:bg-gray-900' : 'hover:bg-gray-300 dark:hover:bg-gray-900'} cursor-pointer text-black dark:text-gray-100  rounded-md transition duration-300 `}
+                                            className={`w-full px-4 py-3  ${pathname.includes(item.navTo) ? 'border-b-4 border-violet-800 dark:border-cyan-400 bg-gray-300 dark:bg-gray-900' : 'hover:bg-gray-300 dark:hover:bg-gray-900'} cursor-pointer text-black dark:text-gray-100  rounded-md transition duration-300 `}
                                         >
                                             {item.name}
                                         </Button>

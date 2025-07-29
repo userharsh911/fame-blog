@@ -42,7 +42,7 @@ const PostCardDetails = () => {
           <div className="max-w-4xl mx-auto mb-6 flex gap-4">
             <Button
               className="bg-blue-500 hover:bg-blue-600 cursor-pointer text-white px-6 py-2 rounded-lg transition-colors duration-200"
-              onClick={() => navigate(`/post/edit/${post.$id}`)}
+              onClick={() => navigate(`/mypost/edit/${post.$id}`)}
             >
               Edit
             </Button>

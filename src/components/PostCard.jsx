@@ -2,7 +2,7 @@ import React from 'react'
 import articleService from '../services/articles'
 import {useNavigate} from 'react-router-dom'
 import { useSelector } from 'react-redux'
-const PostCard = ({$id, title, featuredImage}) => {
+const PostCard = ({$id, title, featuredImage,path}) => {
         const authStatus = useSelector(state => state.isAuthenticated)
     const navigate = useNavigate();
 return (
@@ -20,7 +20,7 @@ return (
             <div className="px-6 pb-4">
                     <button
                         disabled={authStatus ? false : true}
-                        onClick={() => navigate(`/post/${$id}`)}
+                        onClick={() => navigate(`/${path}/${$id}`)}
                         className={`bg-blue-500 ${authStatus ? 'cursor-pointer' : 'cursor-not-allowed'} hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded-lg transition-colors duration-200 dark:bg-blue-600 dark:hover:bg-blue-700`}
                     >
                         Read More

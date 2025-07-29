@@ -15,16 +15,18 @@ import PostEdit from './pages/PostEdit.jsx'
 import MyPost from './pages/MyPost.jsx'
 import AdminPage from './pages/AdminPage.jsx'
 import ScrollToTop from './components/ScrollToTop.jsx'
+import MainPage from './pages/MainPage.jsx'
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path='/' element={<App />}>
-      <Route path='' element={<Home/> }/>
+      <Route path='' element={<MainPage/> }/>
       <Route path='login' element={<AuthLayout Authentication={false}><Login/></AuthLayout>}/>
       <Route path='signup' element={ <AuthLayout Authentication={false}><Signup/></AuthLayout> }/>
       <Route path='addpost' element={ <AuthLayout Authentication={true}><AddPost/></AuthLayout> }/>
-      <Route path='post/:postid' element={ <AuthLayout Authentication={true}><PostCardDetails/></AuthLayout> }/>
-      <Route path='post/edit/:postid' element={ <AuthLayout Authentication={true}><PostEdit/></AuthLayout> }/>
+      <Route path='mypost/:postid' element={ <AuthLayout Authentication={true}><PostCardDetails/></AuthLayout> }/>
+      <Route path='home/:postid' element={ <AuthLayout Authentication={true}><PostCardDetails/></AuthLayout> }/>
+      <Route path='mypost/edit/:postid' element={ <AuthLayout Authentication={true}><PostEdit/></AuthLayout> }/>
       <Route path='mypost' element={ <AuthLayout Authentication={true}><MyPost/></AuthLayout> }/>
       <Route path='admin/:userid' element={ <AuthLayout Authentication={true}><AdminPage/></AuthLayout> }/>
       <Route path='home' element={<Home/> }/>

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import PostCard from '../PostCard'
 import articleService from '../../services/articles'
-const GetAllCards = ({query}) => {
+const GetAllCards = ({query,path}) => {
     const [cards, setCards] = useState(null)
     useEffect(()=>{
         if(query){
@@ -30,7 +30,7 @@ const GetAllCards = ({query}) => {
             <div className="max-w-7xl mx-auto">
                 <div className="grid grid-cols-1 justify-center gap-8 sm:gap-6  sm:grid-cols-2 lg:grid-cols-3">
                     {cards.map(card => (
-                        <PostCard {...card} key={card.$id}/>
+                        <PostCard {...card} key={card.$id} path={path}/>
                     ))}
                 </div>
             </div>

@@ -6,7 +6,7 @@ const MyPost = () => {
     const {$id} = useSelector(state=>state.user)
   return (
     <>
-        <GetAllCards query={[Query.equal("userid",$id)]}/>
+        <GetAllCards query={[Query.equal("userid",$id)]} path={'mypost'}/>
     </>
   )
 }
