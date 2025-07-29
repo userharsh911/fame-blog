@@ -42,7 +42,7 @@ const PostForm = (post) => {
             }
             
           )
-          uptPost ? navigate(`/post/${post.$id}`) : null
+          uptPost ? navigate(`/mypost/${post.$id}`) : null
         }
       }else{
         const file =  data.featuredImage[0] ? await articleService.uploadFile((data.featuredImage[0])) : null;
@@ -55,7 +55,7 @@ const PostForm = (post) => {
             userid : userData.$id,
 
           })
-          userPost ? navigate(`/post/${slug}`) : null 
+          userPost ? navigate(`/mypost/${slug}`) : null 
         }
       }
       setLoader(false)
