@@ -10,10 +10,6 @@ const Header = () => {
     const [isDark,setIsDark] = useState()
     const authStatus = useSelector(state => state.isAuthenticated)
     const user = useSelector(state => state.user)
-    
-    useEffect(()=>{
-        console.log("path ",pathname)
-    },[pathname])
 
     const navItems = [
         {
