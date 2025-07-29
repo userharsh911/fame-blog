@@ -7,7 +7,8 @@ import Input from '../Input'
 import RTE from '../RTE'
 import Select from '../Select'
 const PostForm = (post) => {
-  const [slugValue,setSlugValue] = useState('')
+  const [slugValue,setSlugValue] = useState('');
+  const [imageValue , setImageValue] = useState(null)
   const [loader, setLoader] = useState(false)
   const navigate = useNavigate();
   const userData = useSelector(state => state.user)
@@ -19,17 +20,25 @@ const PostForm = (post) => {
         status : post?.status || ''
       }
     })
-
     const submitForm = async (data) => {
       setLoader(true)
       if(post.title){
-        const file =  data.featuredImage[0] ? await articleService.uploadFile((data.featuredImage[0])) : null;
+        const file =  typeof(data.featuredImage)=='object' ? await articleService.uploadFile((data.featuredImage[0])) : null;
         if(file){
           await articleService.deleteFile(post.featuredImage)
           const uptPost = await articleService.updatePost(
             post.$id,
             {...data,
               featuredImage: file.$id
+            }
+            
+          )
+          uptPost ? navigate(`/post/${post.$id}`) : null
+        }else{
+          const uptPost = await articleService.updatePost(
+            post.$id,
+            {...data,
+              featuredImage: post.featuredImage
             }
             
           )
@@ -61,7 +70,22 @@ const PostForm = (post) => {
       setSlugValue(
           getValues("title").trim().toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "")
         )
-    },[watch])
+    },[watch('title')])
+    // to show previous upload images
+    useEffect(()=>{
+      if(post.featuredImage){
+          articleService.getFile(post.featuredImage)
+        .then((response)=>{
+          setImageValue(response.name)
+        })
+      }
+    },[])
+    //  to show real time upload images
+    useEffect(()=>{
+      if(getValues('featuredImage')){
+        setImageValue(getValues('featuredImage')[0].name)
+      }
+    },[watch("featuredImage")])
   return (
     <div className="dark:bg-gray-800">
       <form className="p-4">
@@ -91,10 +115,17 @@ const PostForm = (post) => {
         <Input 
         type="file"
         label="Image"
-        {...register('featuredImage', { required: true })} 
+        {...register('featuredImage', { required: imageValue ? false : true })} 
         className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-800 dark:text-gray-200 dark:border-gray-600"
         accept="image/*"
         />
+        {
+          imageValue ? (
+            <p 
+            className='dark:text-green-300 text-green-800 mt-2'
+            >{imageValue}</p>
+          ) : null
+        }
       </div>
       <div className="mb-4">
         <Select 
