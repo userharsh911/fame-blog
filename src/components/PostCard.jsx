@@ -17,14 +17,21 @@ return (
             <div className="px-6 py-4 ">
                     <h2 className="font-bold text-xl mb-2 text-gray-800 dark:text-gray-100">{title}</h2>
             </div>
-            <div className="px-6 pb-4">
+            <div className="px-6 pb-4 relative inline-block group">
                     <button
-                        disabled={authStatus ? false : true}
-                        onClick={() => navigate(`/${path}/${$id}`)}
-                        className={`bg-blue-500 ${authStatus ? 'cursor-pointer' : 'cursor-not-allowed'} hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded-lg transition-colors duration-200 dark:bg-blue-600 dark:hover:bg-blue-700`}
+                        onClick={() =>{
+                                if(authStatus) navigate(`/${path}/${$id}`)
+                                else navigate('/login')
+                        }}
+                        className={`bg-blue-500 ${authStatus ? 'cursor-pointer' : 'cursor-not-allowed'} hover:bg-blue-600 text-white font-semibold py-2 px-4  rounded-lg transition-colors duration-200 dark:bg-blue-600 dark:hover:bg-blue-700`}
                     >
                         Read More
                     </button>
+                    <span class="absolute left-1/2 -translate-x-1/2 bottom-full mb-2
+                        hidden group-hover:block bg-gray-800 text-white text-sm 
+                        px-2 py-1 rounded shadow-lg">
+                Login first
+                </span>
             </div>
     </div>
 )
