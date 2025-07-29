@@ -12,7 +12,7 @@ const Home = () => {
     <div className="min-h-screen mt-10 px-2 md:px-4 lg:px-8">
     <div className="min-h-screen  px-0 md:px-8">
       {!authStatus ? (
-        <div className="max-w-2xl mx-auto my-8 p-6">
+        <div className="max-w-2xl mx-auto my-8 py-6">
       <div className="bg-gradient-to-r from-blue-50 to-purple-50 dark:from-gray-800 dark:to-gray-700 rounded-2xl p-8 text-center border border-blue-100 dark:border-gray-600 shadow-lg">
         {/* Icon */}
         <div className="flex justify-center mb-4">
