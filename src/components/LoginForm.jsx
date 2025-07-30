@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import {useForm} from "react-hook-form"
+import { useForm} from "react-hook-form"
 import authService from '../services/authService'
 import { login as authLogin } from '../features/authSlice'
 import { useDispatch } from 'react-redux'
@@ -9,6 +9,7 @@ import Button from './Button'
 
 const LoginForm = () => {
     const [error, setError] = useState('');
+    const [showPassword, setShowPassword] = useState(false)
     const [loader, setLoader] = useState(false);
     const navigate = useNavigate()
     const {register, handleSubmit} = useForm();
@@ -53,13 +54,16 @@ return (
                 />
                 <Input
                     label="Password"
-                    type="password"
+                    type={showPassword?'text':'password'}
                     className="w-full px-4 py-3 bg-gray-50 dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400"
                     placeholder="Enter your password"
                     {...register('password', {
                         required: true
                     })}
+                    setShowPassword={setShowPassword}
+                    showPassword={showPassword}
                 />
+                
                 <Button
                     type='submit'
                     className={`w-full cursor-pointer py-3 px-4 bg-gradient-to-r from-blue-600 to-blue-700 text-white font-semibold rounded-lg hover:from-blue-700 hover:to-blue-800 transform hover:-translate-y-0.5 transition-all duration-200 ${loader ? 'cursor-progress opacity-50' : 'cursor-pointer'}`}
