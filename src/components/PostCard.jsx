@@ -6,12 +6,12 @@ const PostCard = ({$id, title, featuredImage,path}) => {
         const authStatus = useSelector(state => state.isAuthenticated)
     const navigate = useNavigate();
 return (
-    <div className="max-w-sm w-full rounded-lg mx-auto border-2 overflow-hidden shadow-lg bg-white bg-gradient-to-r dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 transition-colors duration-200">
+    <div className="max-w-sm w-full rounded-lg mx-auto hover:-translate-y-3 transition overflow-hidden shadow-xl hover:shadow-gray-950 bg-white bg-gradient-to-r dark:from-gray-900 hover:dark:from-gray-950 dark:via-gray-800 dark:hover:via-gray-700 dark:to-gray-900 hover:dark:to-gray-950 duration-200">
             <div className="relative h-48 overflow-hidden">
                     <img 
                             src={articleService.getFilePreview(featuredImage)} 
                             alt={title} 
-                            className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
+                            className="w-full hover:brightness-100 brightness-80 h-full object-cover transition-transform duration-300 hover:scale-105"
                     />
             </div>
             <div className="px-6 py-4 ">
@@ -24,8 +24,8 @@ return (
             else navigate('/login')
         }}
         className={`
-            bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded-lg 
-            transition-all duration-200 dark:bg-blue-600 dark:hover:bg-blue-700
+            bg-blue-500 hover:bg-blue-600 hover:-rotate-5 shadow hover:shadow-blue-600 text-white font-semibold py-2 px-4 rounded-lg 
+            transition-all duration-200 dark:bg-blue-700 dark:hover:bg-blue-600
             ${authStatus ? 'cursor-pointer shadow-md hover:shadow-lg' : 'cursor-not-allowed opacity-75 hover:opacity-60'}
         `}
     >
