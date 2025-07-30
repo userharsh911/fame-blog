@@ -29,8 +29,8 @@ const GetAllCards = ({query,path}) => {
             </div>
             <div className="max-w-7xl mx-auto">
                 <div className="grid grid-cols-1 justify-center gap-8 sm:gap-6  sm:grid-cols-2 lg:grid-cols-3">
-                    {cards.map(card => (
-                        <PostCard {...card} key={card.$id} path={path}/>
+                    {cards.map((card,index) => (
+                        <PostCard {...card} key={card.$id} path={path} index={index}/>
                     ))}
                 </div>
             </div>

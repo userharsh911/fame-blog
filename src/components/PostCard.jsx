@@ -2,11 +2,12 @@ import React from 'react'
 import articleService from '../services/articles'
 import {useNavigate} from 'react-router-dom'
 import { useSelector } from 'react-redux'
-const PostCard = ({$id, title, featuredImage,path}) => {
+const PostCard = ({$id, title, featuredImage,path,index}) => {
         const authStatus = useSelector(state => state.isAuthenticated)
+        console.log(index%2)
     const navigate = useNavigate();
 return (
-    <div className="max-w-sm w-full rounded-lg mx-auto hover:-translate-y-3 transition overflow-hidden shadow-xl hover:shadow-gray-950 bg-white bg-gradient-to-r dark:from-gray-900 hover:dark:from-gray-950 dark:via-gray-800 dark:hover:via-gray-700 dark:to-gray-900 hover:dark:to-gray-950 duration-200">
+    <div className={`max-w-sm w-full rounded-lg mx-auto hover:-translate-y-3 ${index%2 ? 'hover:rotate-z-3' : 'hover:-rotate-z-3'}  origin-center transition overflow-hidden shadow-xl hover:shadow-gray-950 bg-white bg-gradient-to-r dark:from-gray-900 hover:dark:from-gray-950 dark:via-gray-800 dark:hover:via-gray-700 dark:to-gray-900 hover:dark:to-gray-950 duration-200`}>
             <div className="relative h-48 overflow-hidden">
                     <img 
                             src={articleService.getFilePreview(featuredImage)} 
