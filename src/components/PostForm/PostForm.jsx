@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { set, useForm } from 'react-hook-form'
+import {  useForm } from 'react-hook-form'
 import articleService from '../../services/articles'
 import { useNavigate } from 'react-router-dom'
 import { useSelector } from 'react-redux'
@@ -12,7 +12,7 @@ const PostForm = (post) => {
   const [loader, setLoader] = useState(false)
   const navigate = useNavigate();
   const userData = useSelector(state => state.user)
-    const {register,handleSubmit,control, getValues, setValue,watch} = useForm({
+    const {register,handleSubmit,control, getValues, formState: { errors },watch} = useForm({
       defaultValues : {
         title : post?.title || '',
         content : post?.content || '',
@@ -94,9 +94,22 @@ const PostForm = (post) => {
         type="text"
         label="Title"
         placeholder="Enter post title"
-        {...register('title', { required: true })} 
+        {...register('title', {
+           required: true, 
+           maxLength: {
+            value: 36,
+            message: "Title must be less than 36 characters"
+           },
+           minLength: {
+            value: 5,
+            message: "Title must be at least 5 characters long"
+           },
+        })} 
         className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-800 dark:text-gray-200 dark:border-gray-600"
         />
+        {errors.title && (
+          <p style={{ color: "red" }}>{errors.title.message}</p>
+        )}
       </div>
       <div className="mb-4">
         <Input 
